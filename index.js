@@ -7,6 +7,19 @@ const image = document.querySelector("#img");
 let text = document.querySelector(".text");
 const userName = document.querySelector("#btn-user-name");
 const btnClose = document.querySelectorAll(".close");
+const clickArea = document.querySelector("#click-area");
+let totalDonuts = document.querySelector(".total-donut-count");
+const donutImage = document.querySelector("#donut-img");
+
+let donutCount = 0;
+let autoClicker = {
+  yellow: 0,
+  orange: 0,
+  green: 0,
+  blue: 0,
+  red: 0
+};
+let autoClickerCount = 0;
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -43,4 +56,10 @@ window.onclick = function(event) {
   else if(event.target == userNameModal) {
     userNameModal.style.display = "none";
   }
+}
+
+clickArea.onclick = function() {
+  donutCount++;
+  // donutImage.style.transform = "scale(0.9)";
+  totalDonuts.innerText = donutCount;
 }
