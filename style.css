@@ -1,0 +1,100 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas: 
+        "header header shop"
+        "user-name greetings shop"
+        "total-donuts yellow-area auto-clicker-yellow"
+        "total-donuts orange-area auto-clicker-orange"
+        "click-area green-area auto-clicker-green"
+        "click-area blue-area auto-clicker-blue"
+        "click-area red-area auto-clicker-red"
+        "footer footer footer";
+    gap: .5rem;
+}
+
+header {
+  background: rgb(218, 218, 218);
+  grid-area: header;
+}
+
+#greetings {
+  background: rgb(218, 218, 218);
+  grid-area: greetings;
+}
+
+#shop {
+  background: rgb(218, 218, 218);
+  grid-area: shop;
+}
+
+#user-name {
+  background: rgb(218, 218, 218);
+  grid-area: user-name;
+}
+
+#yellow {
+  background: rgb(218, 218, 218);
+  grid-area: yellow-area;
+}
+
+#auto-clicker-yellow {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-yellow;
+}
+
+#total-donuts {
+  background: rgb(218, 218, 218);
+  grid-area: total-donuts;
+}
+
+#orange {
+  background: rgb(218, 218, 218);
+  grid-area: orange-area;
+}
+
+#auto-clicker-orange {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-orange;
+}
+
+#click-area {
+  background: rgb(218, 218, 218);
+  grid-area: click-area;
+}
+
+#green {
+  background: rgb(218, 218, 218);
+  grid-area: green-area;
+}
+
+#auto-clicker-green {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-green;
+}
+
+#blue {
+  background: rgb(218, 218, 218);
+  grid-area: blue-area;
+}
+
+#auto-clicker-blue {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-blue;
+}
+
+#red {
+  background: rgb(218, 218, 218);
+  grid-area: red-area;
+}
+
+#auto-clicker-red {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-red;
+}
+
+footer {
+  background: rgb(218, 218, 218);
+  grid-area: footer;
+}
