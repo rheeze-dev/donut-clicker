@@ -10,18 +10,37 @@
   <body>
     <div class="container">
         <header>
-          <button>Fred the Baker Baking Company</button>
-          <button>Cookie Clicker</button>
-          <button>My contact info</button>
+          <button id="baking-company">Fred the Baker Baking Company</button>
+          <button id="cookie-clicker">Cookie Clicker</button>
+          <button id="contact-info">My contact info</button>
+
+          <div id="header-modal" class="modal">
+            <div class="modal-content">
+              <span class="close close-header-modal">&times;</span>
+              <img src="img/baking-company.jpg" class="modal-content" id="img">
+              <p class="text">Some text in the Modal..</p>
+            </div>
+          </div>
         </header>
+      <div id="user-name">
+        <button id="btn-user-name">user-name</button>
+
+        <div id="user-name-modal" class="modal">
+          <div class="modal-content">
+            <span class="close close-user-name-modal">&times;</span>
+            <h2>Change your username: </h2>
+            <input type="text" id="fname" name="fname"><br>
+            <button>Confirm</button>
+            <button>Random</button>
+            <button>Cancel</button>
+          </div>
+        </div>
+      </div>
       <div id="greetings">
         <p>Greetings</p>
       </div>
       <div id="shop">
         <p>shop</p>
-      </div>
-      <div id="user-name">
-        <p>user-name</p>
       </div>
       <div id="yellow">
         <p>Yellow</p>
