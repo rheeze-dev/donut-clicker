@@ -21,7 +21,7 @@ const totalBlueClicker = document.querySelector(".total-blue-clicker");
 const totalRedClicker = document.querySelector(".total-red-clicker");
 const divAutoClickers = document.querySelectorAll(".auto-clickers");
 
-let donutCount = 90;
+let donutCount = 190000;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -80,10 +80,23 @@ divAutoClickers.forEach((divClicker) => {
   divClicker.addEventListener("click", function() {
     const color = this.id.split("-").pop();
     autoClickers[color]++;
+    insertImage(color);
     donutCount = donutCount - Math.round(autoClickerCost[color]);
     autoClickerCost[color] += Math.round(autoClickerCost[color]) * .10;
   });
 });
+
+function insertImage(color){
+  const divElement = document.querySelector(`#${color}`);
+  const img = document.createElement("img");
+  if(color === "green") img.src = "img/balbasaur.png";
+  else if(color === "blue") img.src = "img/blastoise.png";
+  else if(color === "red")img.src = "img/charizard.png";
+  img.style.height = "50px";
+  img.style.width = "50px";
+  img.style.padding = "5px";
+  divElement.appendChild(img);
+}
 
 setInterval(function () {
   let autoClicksPerSecond = 0;
