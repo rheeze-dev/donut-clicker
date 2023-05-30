@@ -11,14 +11,14 @@
     <div class="container">
         <header>
           <button id="baking-company">Fred the Baker Baking Company</button>
-          <button id="cookie-clicker">Cookie Clicker</button>
+          <button id="donut-clicker">Donut Clicker</button>
           <button id="contact-info">My contact info</button>
 
           <div id="header-modal" class="modal">
             <div class="modal-content">
               <span class="close close-header-modal">&times;</span>
               <img src="img/baking-company.jpg" class="modal-content" id="img">
-              <p class="text">Some text in the Modal..</p>
+              <p class="header-modal-text">Some text in the Modal..</p>
             </div>
           </div>
         </header>
@@ -29,7 +29,7 @@
           <div class="modal-content">
             <span class="close close-user-name-modal">&times;</span>
             <h2>Change your username: </h2>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="user-name"><br>
             <button>Confirm</button>
             <button>Random</button>
             <button>Cancel</button>
@@ -40,23 +40,16 @@
         <p>Greetings</p>
       </div>
       <div id="shop">
-        <p>shop</p>
-      </div>
-      <div id="yellow">
-        <p>Yellow</p>
-      </div>
-      <div id="auto-clicker-yellow">
-        <p>Auto-clicker-yellow</p>
+        <p class="shop-name">shop</p>
+        <p class="buy">buy</p>
+        <p class="sell">sell</p>
+        <button class="optionOne">1</button>
+        <button class="optionTen">10</button>
+        <button class="optionFifty">50</button>
       </div>
       <div id="total-donuts">
         <p>Total donuts: </p>
         <p class="total-donut-count">0</p>
-      </div>
-      <div id="orange">
-        <p>Orange</p>
-      </div>
-      <div id="auto-clicker-orange">
-        <p>Auto clicker orange</p>
       </div>
       <div id="click-area">
         <img src="/img/donut.jpg" id="donut-img" alt="">
@@ -64,23 +57,29 @@
       <div id="green">
         <p>Green</p>
       </div>
-      <div id="auto-clicker-green">
-        <p>Auto clicker green</p>
+      <div class="auto-clickers" id="auto-clicker-green">
+        <button>Auto-clicker-green = price</button>
+        <p class="price-green-clicker">Price: 100</p>
+        <p class="total-green-clicker">Total purchased: 0</p>
       </div>
       <div id="blue">
         <p>Blue</p>
       </div>
-      <div id="auto-clicker-blue">
-        <p>Auto clicker blue</p>
+      <div class="auto-clickers" id="auto-clicker-blue">
+        <button>Auto-clicker-blue = price</button>
+        <p class="price-blue-clicker">Price: 100</p>
+        <p class="total-blue-clicker">Total purchased: 0</p>
       </div>
       <div id="red">
         <p>Red</p>
       </div>
-      <div id="auto-clicker-red">
-        <p>Auto clicker red</p>
+      <div class="auto-clickers" id="auto-clicker-red">
+        <button>Auto-clicker-red = price</button>
+        <p class="price-red-clicker">Price: 100</p>
+        <p class="total-red-clicker">Total purchased: 0</p>
       </div>
     </div>
     <footer>Footer</footer>
-    <script src="./index.js"></script>
+    <script src="./donutMaker.js"></script>
   </body>
 </html>
