@@ -1,0 +1,149 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas: 
+        "header header shop"
+        "user-name greetings shop"
+        "total-donuts yellow-area auto-clicker-yellow"
+        "click-area orange-area auto-clicker-orange"
+        "click-area green-area auto-clicker-green"
+        "click-area blue-area auto-clicker-blue"
+        "click-area red-area auto-clicker-red"
+        "footer footer footer";
+    gap: .5rem;
+}
+
+header {
+  background: rgb(218, 218, 218);
+  grid-area: header;
+}
+
+#greetings {
+  background: rgb(218, 218, 218);
+  grid-area: greetings;
+}
+
+#shop {
+  background: rgb(218, 218, 218);
+  grid-area: shop;
+}
+
+#user-name {
+  background: rgb(218, 218, 218);
+  grid-area: user-name;
+}
+
+#yellow {
+  background: rgb(218, 218, 218);
+  grid-area: yellow-area;
+}
+
+#auto-clicker-yellow {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-yellow;
+}
+
+#total-donuts {
+  background: rgb(218, 218, 218);
+  grid-area: total-donuts;
+}
+
+#orange {
+  background: rgb(218, 218, 218);
+  grid-area: orange-area;
+}
+
+#auto-clicker-orange {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-orange;
+}
+
+#click-area {
+  background: rgb(218, 218, 218);
+  grid-area: click-area;
+}
+
+#green {
+  background: rgb(218, 218, 218);
+  grid-area: green-area;
+}
+
+#auto-clicker-green {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-green;
+}
+
+#blue {
+  background: rgb(218, 218, 218);
+  grid-area: blue-area;
+}
+
+#auto-clicker-blue {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-blue;
+}
+
+#red {
+  background: rgb(218, 218, 218);
+  grid-area: red-area;
+}
+
+#auto-clicker-red {
+  background: rgb(218, 218, 218);
+  grid-area: auto-clicker-red;
+}
+
+footer {
+  background: rgb(218, 218, 218);
+  grid-area: footer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #img {
+    height: 300px;
+    width: auto;
+  }
+
+  button:active {
+    transform: scale(0.9);
+  }
+
+  button {
+    border-radius: 12px;
+  }
