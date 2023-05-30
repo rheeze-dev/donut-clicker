@@ -10,9 +10,9 @@ const btnClose = document.querySelectorAll(".close");
 const clickArea = document.querySelector("#click-area");
 let totalDonuts = document.querySelector(".total-donut-count");
 const donutImage = document.querySelector("#donut-img");
-const autoClickerGreenButton = document.querySelector("#auto-clicker-green");
-const autoClickerBlueButton = document.querySelector("#auto-clicker-blue");
-const autoClickerRedButton = document.querySelector("#auto-clicker-red");
+const autoClickerGreenDiv = document.querySelector("#auto-clicker-green");
+const autoClickerBlueDiv = document.querySelector("#auto-clicker-blue");
+const autoClickerRedDiv = document.querySelector("#auto-clicker-red");
 const priceGreenClicker = document.querySelector(".price-green-clicker");
 const priceBlueClicker = document.querySelector(".price-blue-clicker");
 const priceRedClicker = document.querySelector(".price-red-clicker");
@@ -21,7 +21,7 @@ const totalBlueClicker = document.querySelector(".total-blue-clicker");
 const totalRedClicker = document.querySelector(".total-red-clicker");
 const divAutoClickers = document.querySelectorAll(".auto-clickers");
 
-let donutCount = 0;
+let donutCount = 90;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -101,5 +101,10 @@ setInterval(function () {
   totalBlueClicker.innerHTML = "Total purchased: " + autoClickers.blue;
   priceRedClicker.innerHTML = "Price: " + Math.round(autoClickerCost.red);
   totalRedClicker.innerHTML = "Total purchased: " + autoClickers.red;
+  if(donutCount < autoClickerCost.green) autoClickerGreenDiv.classList.add("disabled");
+  else autoClickerGreenDiv.classList.remove("disabled");
+  if(donutCount < autoClickerCost.blue) autoClickerBlueDiv.classList.add("disabled");
+  else autoClickerBlueDiv.classList.remove("disabled");
+  if(donutCount < autoClickerCost.red) autoClickerRedDiv.classList.add("disabled");
+  else autoClickerRedDiv.classList.remove("disabled");
 }, 100);
-
