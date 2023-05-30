@@ -10,16 +10,24 @@ const btnClose = document.querySelectorAll(".close");
 const clickArea = document.querySelector("#click-area");
 let totalDonuts = document.querySelector(".total-donut-count");
 const donutImage = document.querySelector("#donut-img");
+const autoClickerGreen = document.querySelector("#auto-clicker-green");
+const autoClickerBlue = document.querySelector("#auto-clicker-blue");
+const autoClickerRed = document.querySelector("#auto-clicker-red");
+const priceGreenClicker = document.querySelector(".price-green-clicker");
+const totalGreenClicker = document.querySelector(".total-green-clicker");
 
 let donutCount = 0;
-let autoClicker = {
-  yellow: 0,
-  orange: 0,
+let autoClickers = {
   green: 0,
   blue: 0,
   red: 0
 };
-let autoClickerCount = 0;
+
+let autoClickerCost = {
+  green: 100,
+  blue: 200,
+  red: 300
+};
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -63,3 +71,31 @@ clickArea.onclick = function() {
   // donutImage.style.transform = "scale(0.9)";
   totalDonuts.innerText = donutCount;
 }
+
+autoClickerGreen.onclick = function() {
+  autoClickers.green++;
+  donutCount = donutCount - Math.round(autoClickerCost.green);
+  totalDonuts.innerText = donutCount;
+  autoClickerCost.green = Math.round(autoClickerCost.green);
+  autoClickerCost.green += autoClickerCost.green * .10;
+  priceGreenClicker.innerHTML = "Price: " + Math.round(autoClickerCost.green);
+  totalGreenClicker.innerHTML = "Total purchased: " + autoClickers.green;
+}
+
+autoClickerBlue.onclick = function() {
+  autoClickers.blue++;
+}
+
+autoClickerRed.onclick = function() {
+  autoClickers.red++;
+}
+
+setInterval(function () {
+  let autoClicksPerSecond = 0;
+  autoClicksPerSecond += autoClickers.green * 1;
+  autoClicksPerSecond += autoClickers.blue * 2;
+  autoClicksPerSecond += autoClickers.red * 3;
+  donutCount += autoClicksPerSecond;
+  totalDonuts.innerText = donutCount;
+}, 1000);
+

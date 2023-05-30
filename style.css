@@ -1,16 +1,14 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: .2fr .4fr 1fr 1fr 1fr;
     grid-template-areas: 
         "header header shop"
         "user-name greetings shop"
-        "total-donuts yellow-area auto-clicker-yellow"
-        "click-area orange-area auto-clicker-orange"
-        "click-area green-area auto-clicker-green"
+        "total-donuts green-area auto-clicker-green"
         "click-area blue-area auto-clicker-blue"
         "click-area red-area auto-clicker-red"
-        "footer footer footer";
+        "click-area footer footer";
     gap: .5rem;
 }
 
@@ -27,6 +25,48 @@ header {
 #shop {
   background: rgb(218, 218, 218);
   grid-area: shop;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: .5rem;
+}
+
+.shop-name {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+}
+
+.buy {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.buy:hover {
+    cursor: pointer;
+}
+
+.sell {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.sell:hover {
+    cursor: pointer;
+}
+
+.optionOne {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.optionTen {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.optionFifty {
+    grid-column: 3;
+    grid-row: 3;
 }
 
 #user-name {
@@ -34,29 +74,9 @@ header {
   grid-area: user-name;
 }
 
-#yellow {
-  background: rgb(218, 218, 218);
-  grid-area: yellow-area;
-}
-
-#auto-clicker-yellow {
-  background: rgb(218, 218, 218);
-  grid-area: auto-clicker-yellow;
-}
-
 #total-donuts {
   background: rgb(218, 218, 218);
   grid-area: total-donuts;
-}
-
-#orange {
-  background: rgb(218, 218, 218);
-  grid-area: orange-area;
-}
-
-#auto-clicker-orange {
-  background: rgb(218, 218, 218);
-  grid-area: auto-clicker-orange;
 }
 
 #click-area {
@@ -136,7 +156,7 @@ footer {
   }
 
   #img {
-    height: 300px;
+    height: 320;
     width: auto;
   }
 
@@ -146,4 +166,9 @@ footer {
 
   button {
     border-radius: 12px;
+  }
+
+  #donut-img {
+    height: 100%;
+    width: 100%;
   }
