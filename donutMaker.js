@@ -40,7 +40,7 @@ let autoClickerCost = {
   red: 300
 };
 let optionValue = 1;
-let isBuy = false;
+let isBuy = true;
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -96,12 +96,12 @@ optionsButton.forEach((option) => {
   });
 });
 
-divAutoClickers.forEach((divClicker) => {
-  divClicker.addEventListener("click", function() {
+divAutoClickers.forEach((divAutoClicker) => {
+  divAutoClicker.addEventListener("click", function() {
     const color = this.id.split("-").pop();
-    autoClickers[color]++;
+    autoClickers[color] += parseInt(optionValue);
     insertImage(color);
-    donutCount = donutCount - Math.round(autoClickerCost[color]);
+    donutCount = donutCount - (Math.round(autoClickerCost[color] * parseInt(optionValue)));
     autoClickerCost[color] += Math.round(autoClickerCost[color]) * .10;
   });
 });
@@ -139,24 +139,24 @@ setInterval(function () {
   if(isBuy) {
     priceGreenClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.green) * optionValue}`;
     greenDonutPerSecond.innerHTML = optionValue === 1 ? "+" + optionValue + " donut per second" : "+" + optionValue + " donuts per second";
-    totalGreenClicker.innerHTML = "Total purchased: " + autoClickers.green;
+    totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green;
     priceBlueClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.blue) * optionValue}`;
     blueDonutPerSecond.innerHTML = "+" + 5 * optionValue + " donuts per second";
-    totalBlueClicker.innerHTML = "Total purchased: " + autoClickers.blue;
+    totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
     redDonutPerSecond.innerHTML = "+" + 10 * optionValue + " donuts per second";
     priceRedClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.red) * optionValue}`;
-    totalRedClicker.innerHTML = "Total purchased: " + autoClickers.red;
+    totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
   }
   else {
     priceGreenClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green) * .20)}`;
-    greenDonutPerSecond.innerHTML = optionValue === 1 ? "-" + optionValue + " donut per second" : "+" + optionValue + " donuts per second";
-    totalGreenClicker.innerHTML = "";
+    greenDonutPerSecond.innerHTML = optionValue === 1 ? "-" + optionValue + " donut per second" : "-" + optionValue + " donuts per second";
+    totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green;
     priceBlueClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue) * .20)}`;
     blueDonutPerSecond.innerHTML = "-" + 5 * optionValue + " donuts per second";
-    totalBlueClicker.innerHTML = "";
+    totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
     redDonutPerSecond.innerHTML = "-" + 10 * optionValue + " donuts per second";
     priceRedClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red) * .20)}`;
-    totalRedClicker.innerHTML = "";
+    totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
   }
 
   let donutsPerSecond = autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
