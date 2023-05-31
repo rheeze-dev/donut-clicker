@@ -25,6 +25,8 @@ const totalRedClicker = document.querySelector(".total-red-clicker");
 const divAutoClickers = document.querySelectorAll(".auto-clickers");
 const optionsButton = document.querySelectorAll(".options");
 const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
+const buyButton = document.querySelector("#buy-button");
+const sellButton = document.querySelector("#sell-button");
 
 let donutCount = 1390;
 let autoClickers = {
@@ -87,6 +89,10 @@ optionsButton.forEach((option) => {
   option.addEventListener("click", function() {
     const attr = option.getAttribute("data-attr");
     optionValue = attr;
+      document.querySelector(".optionOne").style.background = "#f0f0f0";
+      document.querySelector(".optionTen").style.background = "#f0f0f0";
+      document.querySelector(".optionFifty").style.background = "#f0f0f0";
+      option.style.background = "#00FFFF";
   });
 });
 
@@ -100,11 +106,15 @@ divAutoClickers.forEach((divClicker) => {
   });
 });
 
-document.querySelector("#buy-button").onclick = function() {
+buyButton.onclick = function() {
+  buyButton.style.background = "#00FFFF";
+  sellButton.style.background = "#f0f0f0";
   isBuy = true;
 }
 
 document.querySelector("#sell-button").onclick = function() {
+  sellButton.style.background = "#00FFFF";
+  buyButton.style.background= "#f0f0f0";
   isBuy = false;
 }
 
