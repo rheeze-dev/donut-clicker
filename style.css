@@ -36,21 +36,21 @@ header {
     grid-row: 1 / -1;
 }
 
-.buy {
+#buy-button {
     grid-column: 1;
     grid-row: 2;
 }
 
-.buy:hover {
+#buy:hover {
     cursor: pointer;
 }
 
-.sell {
+#sell-button {
     grid-column: 2;
     grid-row: 2;
 }
 
-.sell:hover {
+#sell:hover {
     cursor: pointer;
 }
 
