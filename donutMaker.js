@@ -28,7 +28,7 @@ const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
 const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
 
-let donutCount = 1390;
+let donutCount = 139000;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -99,10 +99,18 @@ optionsButton.forEach((option) => {
 divAutoClickers.forEach((divAutoClicker) => {
   divAutoClicker.addEventListener("click", function() {
     const color = this.id.split("-").pop();
-    autoClickers[color] += parseInt(optionValue);
-    insertImage(color);
-    donutCount = donutCount - (Math.round(autoClickerCost[color] * parseInt(optionValue)));
-    autoClickerCost[color] += Math.round(autoClickerCost[color]) * .10;
+    if(isBuy) {
+      autoClickers[color] += parseInt(optionValue);
+      insertImage(color);
+      donutCount = donutCount - (Math.round(autoClickerCost[color] * parseInt(optionValue)));
+      autoClickerCost[color] += Math.round(autoClickerCost[color]) * .10;
+    }
+    else {
+      autoClickers[color] -= parseInt(optionValue);
+      removeImage(color);
+      donutCount = donutCount + ((Math.round(autoClickerCost[color] * .50 ) * parseInt(optionValue)));
+      autoClickerCost[color] -= Math.round(autoClickerCost[color]) * .09;
+    }
   });
 });
 
@@ -121,13 +129,39 @@ document.querySelector("#sell-button").onclick = function() {
 function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
-  if(color === "green") img.src = "img/balbasaur.png";
-  else if(color === "blue") img.src = "img/blastoise.png";
-  else if(color === "red")img.src = "img/charizard.png";
-  img.style.height = "50px";
-  img.style.width = "50px";
-  img.style.padding = "5px";
+  img.setAttribute("data", optionValue);
+  console.log(optionValue);
+  if(optionValue == 1) {
+    if(color === "green") img.src = "img/balbasaur.png";
+    else if(color === "blue") img.src = "img/blastoise.png";
+    else if(color === "red") img.src = "img/charizard.png";
+    img.style.height = "30px";
+    img.style.width = "30px";
+    img.style.padding = "5px";
+  }
+  else if(optionValue == 10) {
+    if(color === "green") img.src = "img/balbasaur.png";
+    else if(color === "blue") img.src = "img/blastoise.png";
+    else if(color === "red")img.src = "img/charizard.png";
+    img.style.height = "40px";
+    img.style.width = "40px";
+    img.style.padding = "5px";
+  }
+  else {
+    if(color === "green") img.src = "img/balbasaur.png";
+    else if(color === "blue") img.src = "img/blastoise.png";
+    else if(color === "red")img.src = "img/charizard.png";
+    img.style.height = "50px";
+    img.style.width = "50px";
+    img.style.padding = "5px";
+  }
   divElement.appendChild(img);
+}
+
+function removeImage(color){
+  const imageElement = document.querySelector(`#${color}`).querySelector(`[data="${optionValue}"]`);
+  console.log(imageElement);
+  imageElement.remove(imageElement.lastElementChild);
 }
 
 setInterval(function () {
