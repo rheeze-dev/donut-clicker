@@ -126,6 +126,19 @@ sellButton.onclick = function() {
   isBuy = false;
 }
 
+document.querySelector(".reset-button").onclick = function() {
+  donutCount = 0;
+  autoClickers.green = 0;
+  autoClickers.blue = 0;
+  autoClickers.red = 0;
+  autoClickerCost.green = 100;
+  autoClickerCost.blue = 200;
+  autoClickerCost.red = 300;
+  optionValue = 1;
+  isBuy = true;
+  removeAllImages();
+}
+
 function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
@@ -160,6 +173,15 @@ function insertImage(color){
 function removeImage(color){
   const imageElement = document.querySelector(`#${color}`).querySelectorAll(`[data="${optionValue}"]`);
   imageElement[imageElement.length - 1].remove(imageElement);
+}
+
+function removeAllImages(){
+  const greenImageElement = document.querySelector("#green");
+  greenImageElement.replaceChildren();
+  const blueImageElement = document.querySelector("#blue");
+  blueImageElement.replaceChildren();
+  const redImageElement = document.querySelector("#red");
+  redImageElement.replaceChildren();
 }
 
 setInterval(function () {
