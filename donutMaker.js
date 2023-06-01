@@ -28,7 +28,7 @@ const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
 const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
 
-let donutCount = 90;
+let donutCount = 90000;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -158,8 +158,8 @@ function insertImage(color){
 }
 
 function removeImage(color){
-  const imageElement = document.querySelector(`#${color}`).querySelector(`[data="${optionValue}"]`);
-  imageElement.remove(imageElement.lastElementChild);
+  const imageElement = document.querySelector(`#${color}`).querySelectorAll(`[data="${optionValue}"]`);
+  imageElement[imageElement.length - 1].remove(imageElement);
 }
 
 setInterval(function () {
