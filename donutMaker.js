@@ -28,7 +28,7 @@ const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
 const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
 
-let donutCount = 139000;
+let donutCount = 90;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -120,7 +120,7 @@ buyButton.onclick = function() {
   isBuy = true;
 }
 
-document.querySelector("#sell-button").onclick = function() {
+sellButton.onclick = function() {
   sellButton.style.background = "#00FFFF";
   buyButton.style.background= "#f0f0f0";
   isBuy = false;
@@ -130,7 +130,6 @@ function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
   img.setAttribute("data", optionValue);
-  console.log(optionValue);
   if(optionValue == 1) {
     if(color === "green") img.src = "img/balbasaur.png";
     else if(color === "blue") img.src = "img/blastoise.png";
@@ -160,7 +159,6 @@ function insertImage(color){
 
 function removeImage(color){
   const imageElement = document.querySelector(`#${color}`).querySelector(`[data="${optionValue}"]`);
-  console.log(imageElement);
   imageElement.remove(imageElement.lastElementChild);
 }
 
@@ -171,35 +169,38 @@ setInterval(function () {
 setInterval(function () {
   totalDonuts.innerHTML = donutCount;
   if(isBuy) {
-    priceGreenClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.green) * optionValue}`;
-    greenDonutPerSecond.innerHTML = optionValue === 1 ? "+" + optionValue + " donut per second" : "+" + optionValue + " donuts per second";
-    totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green;
-    priceBlueClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.blue) * optionValue}`;
-    blueDonutPerSecond.innerHTML = "+" + 5 * optionValue + " donuts per second";
-    totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
-    redDonutPerSecond.innerHTML = "+" + 10 * optionValue + " donuts per second";
-    priceRedClicker.innerHTML = `x${optionValue} = ${Math.round(autoClickerCost.red) * optionValue}`;
-    totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
+    if(donutCount < (autoClickerCost.green * optionValue)) autoClickerGreenDiv.classList.add("disabled");
+    else autoClickerGreenDiv.classList.remove("disabled");
+    if(donutCount < (autoClickerCost.blue * optionValue)) autoClickerBlueDiv.classList.add("disabled");
+    else autoClickerBlueDiv.classList.remove("disabled");
+    if(donutCount < (autoClickerCost.red * optionValue)) autoClickerRedDiv.classList.add("disabled");
+    else autoClickerRedDiv.classList.remove("disabled");
   }
   else {
-    priceGreenClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green) * .20)}`;
-    greenDonutPerSecond.innerHTML = optionValue === 1 ? "-" + optionValue + " donut per second" : "-" + optionValue + " donuts per second";
-    totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green;
-    priceBlueClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue) * .20)}`;
-    blueDonutPerSecond.innerHTML = "-" + 5 * optionValue + " donuts per second";
-    totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
-    redDonutPerSecond.innerHTML = "-" + 10 * optionValue + " donuts per second";
-    priceRedClicker.innerHTML = `x${optionValue} = ${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red) * .20)}`;
-    totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
+    if(document.querySelector("#green").querySelector(`[data="${optionValue}"]`) == null ) autoClickerGreenDiv.classList.add("disabled");
+    else autoClickerGreenDiv.classList.remove("disabled");
+    if(document.querySelector("#blue").querySelector(`[data="${optionValue}"]`) == null ) autoClickerBlueDiv.classList.add("disabled");
+    else autoClickerBlueDiv.classList.remove("disabled");
+    if(document.querySelector("#red").querySelector(`[data="${optionValue}"]`) == null ) autoClickerRedDiv.classList.add("disabled");
+    else autoClickerRedDiv.classList.remove("disabled");
   }
 
+  priceGreenClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.green) * optionValue}` 
+    : `x${optionValue} = ${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green) * .20)}`;
+  greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"
+    : "-" + optionValue + " donuts per second";
+  totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green 
+  priceBlueClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.blue) * optionValue}`
+    : `x${optionValue} = ${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue) * .20)}`;
+  blueDonutPerSecond.innerHTML = isBuy ? "+" + 5 * optionValue + " donuts per second"
+    : "-" + 5 * optionValue + " donuts per second";
+  totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
+  redDonutPerSecond.innerHTML = isBuy ? "+" + 10 * optionValue + " donuts per second"
+    : "-" + 10 * optionValue + " donuts per second";
+  priceRedClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.red) * optionValue}`
+    : `x${optionValue} = ${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red) * .20)}`;
+  totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
   let donutsPerSecond = autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
   totalDonutsPerSecond.innerHTML = donutsPerSecond <= 1 ? donutsPerSecond + " donut per second"
     : donutsPerSecond + " donuts per second";
-  if(donutCount < (autoClickerCost.green * optionValue)) autoClickerGreenDiv.classList.add("disabled");
-  else autoClickerGreenDiv.classList.remove("disabled");
-  if(donutCount < (autoClickerCost.blue * optionValue)) autoClickerBlueDiv.classList.add("disabled");
-  else autoClickerBlueDiv.classList.remove("disabled");
-  if(donutCount < (autoClickerCost.red * optionValue)) autoClickerRedDiv.classList.add("disabled");
-  else autoClickerRedDiv.classList.remove("disabled");
 }, 100);
