@@ -32,25 +32,30 @@ header {
 }
 
 .shop-name {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+
+.reset-button {
+  grid-column: 3;
+  grid-row: 1;
 }
 
 #buy-button {
     grid-column: 1;
     grid-row: 2;
-    background: #00FFFF;
+    background: #dbfff8;
 }
 
 #sell-button {
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 2;
 }
 
 .optionOne {
     grid-column: 1;
     grid-row: 3;
-    background: #00FFFF;
+    background: #dbfff8;
 }
 
 .optionTen {
@@ -79,7 +84,8 @@ header {
 }
 
 #green {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: #e8f3db;
   grid-area: green-area;
 }
 
@@ -89,7 +95,8 @@ header {
 }
 
 #blue {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: #cdeefd;
   grid-area: blue-area;
 }
 
@@ -99,7 +106,9 @@ header {
 }
 
 #red {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: #ffeded;
+  /* background: #ff7f7f; */
   grid-area: red-area;
 }
 

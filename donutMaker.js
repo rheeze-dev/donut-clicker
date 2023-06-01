@@ -92,7 +92,7 @@ optionsButton.forEach((option) => {
       document.querySelector(".optionOne").style.background = "#f0f0f0";
       document.querySelector(".optionTen").style.background = "#f0f0f0";
       document.querySelector(".optionFifty").style.background = "#f0f0f0";
-      option.style.background = "#00FFFF";
+      option.style.background = "#dbfff8";
   });
 });
 
@@ -115,13 +115,13 @@ divAutoClickers.forEach((divAutoClicker) => {
 });
 
 buyButton.onclick = function() {
-  buyButton.style.background = "#00FFFF";
+  buyButton.style.background = "#dbfff8";
   sellButton.style.background = "#f0f0f0";
   isBuy = true;
 }
 
 sellButton.onclick = function() {
-  sellButton.style.background = "#00FFFF";
+  sellButton.style.background = "#dbfff8";
   buyButton.style.background= "#f0f0f0";
   isBuy = false;
 }
@@ -185,7 +185,7 @@ setInterval(function () {
     else autoClickerRedDiv.classList.remove("disabled");
   }
 
-  priceGreenClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.green) * optionValue}` 
+  priceGreenClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.green) * optionValue}` 
     : autoClickers.green === 0 ? "" : `x${optionValue} = ${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
   greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"
     : autoClickers.green === 0 ? "" : "-" + optionValue + " donuts per second";
