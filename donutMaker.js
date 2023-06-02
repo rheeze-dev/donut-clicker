@@ -216,8 +216,7 @@ function renderUserData(data, param) {
     userName.innerHTML = user.login.username;
   }
   else if(param === "random") {
-    inputUserName.setAttribute("value", user.login.username)
-    console.log("Clicked");
+    inputUserName.value = user.login.username;
   }
 }
 
