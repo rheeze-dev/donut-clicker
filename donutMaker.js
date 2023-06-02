@@ -27,6 +27,7 @@ const optionsButton = document.querySelectorAll(".options");
 const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
 const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
+const inputUserName = document.querySelector("#input-user-name");
 
 let donutCount = 9000;
 let autoClickers = {
@@ -41,6 +42,8 @@ let autoClickerCost = {
 };
 let optionValue = 1;
 let isBuy = true;
+
+fetchFromAPI();
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -61,6 +64,7 @@ contactInfo.onclick = function() {
 
 userName.onclick = function() {
   userNameModal.style.display = "block";
+  inputUserName.setAttribute("value",userName.textContent);
 }
 
 btnClose.forEach((btn) => {
@@ -139,6 +143,19 @@ document.querySelector(".reset-button").onclick = function() {
   removeAllImages();
 }
 
+// document.querySelector("#confirm-button").onclick = function() {
+//   userName.innerHTML = inputUserName.value;
+//   userNameModal.style.display = "none";
+// }
+
+// document.querySelector("#cancel-button").onclick = function() {
+//   userNameModal.style.display = "none";
+// }
+
+// document.querySelector("#random-button").onclick = function() {
+//   // userNameModal.style.display = "none";
+// }
+
 function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
@@ -182,6 +199,20 @@ function removeAllImages(){
   blueImageElement.replaceChildren();
   const redImageElement = document.querySelector("#red");
   redImageElement.replaceChildren();
+}
+
+function fetchFromAPI() {
+  let url = "https://randomuser.me/api/";
+    fetch(url)
+    .then(response => response.json())
+    .then(data => renderUserData(data))
+    .catch(error => alert(error));
+}
+
+function renderUserData(data) {
+  let user = data.results[0];
+  // console.log(user);
+  userName.innerHTML = user.login.username;
 }
 
 setInterval(function () {
