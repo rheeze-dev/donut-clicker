@@ -143,18 +143,18 @@ document.querySelector(".reset-button").onclick = function() {
   removeAllImages();
 }
 
-// document.querySelector("#confirm-button").onclick = function() {
-//   userName.innerHTML = inputUserName.value;
-//   userNameModal.style.display = "none";
-// }
+document.querySelector("#confirm-button").onclick = function() {
+  userName.innerHTML = inputUserName.value;
+  userNameModal.style.display = "none";
+}
 
-// document.querySelector("#cancel-button").onclick = function() {
-//   userNameModal.style.display = "none";
-// }
+document.querySelector("#cancel-button").onclick = function() {
+  userNameModal.style.display = "none";
+}
 
-// document.querySelector("#random-button").onclick = function() {
-//   // userNameModal.style.display = "none";
-// }
+document.querySelector("#random-button").onclick = function() {
+  fetchFromAPI("random");
+}
 
 function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
@@ -201,18 +201,24 @@ function removeAllImages(){
   redImageElement.replaceChildren();
 }
 
-function fetchFromAPI() {
+function fetchFromAPI(param) {
   let url = "https://randomuser.me/api/";
     fetch(url)
     .then(response => response.json())
-    .then(data => renderUserData(data))
+    .then(data => renderUserData(data, param))
     .catch(error => alert(error));
 }
 
-function renderUserData(data) {
+function renderUserData(data, param) {
   let user = data.results[0];
   // console.log(user);
-  userName.innerHTML = user.login.username;
+  if(param == null) {
+    userName.innerHTML = user.login.username;
+  }
+  else if(param === "random") {
+    inputUserName.setAttribute("value", user.login.username)
+    console.log("Clicked");
+  }
 }
 
 setInterval(function () {
