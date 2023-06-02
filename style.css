@@ -39,6 +39,9 @@ header {
 .reset-button {
   grid-column: 3;
   grid-row: 1;
+  background: #000;
+  color: white;
+  font-size: 2rem;
 }
 
 #buy-button {
