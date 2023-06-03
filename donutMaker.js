@@ -47,19 +47,28 @@ fetchFromAPI();
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
-  headerModalText.innerHTML = "Fred the Baker is tired of making real donuts and is ready to retire. He needs our help to keep his love of donuts alive. He wants you to create a game that uses button clicks to create virtual donuts for the world to enjoy.";
+  image.classList.remove("profile-image");
+  image.src = "img/baking-company.jpg";
+  headerModalText.innerHTML = `I have been contracted by Fred the Baker Baking Company to take a concept, Donut Maker Clicker, from the drawing board to the browser. Fred the Baker is 
+  tired of making real donuts and is ready to retire. He needs help to keep his love for donuts alive. He wants to create a game that uses button clicks to create virtual donuts for 
+  the world to enjoy. It's always "Time to make the Donuts" and Fred is too busy to give guidance on how to implement the requirements.`;
 }
 
 donutClicker.onclick = function() {
   headerModal.style.display = "block";
-  // image.src = this.src;
-  headerModalText.innerHTML = "The inspiration for this game is donut clicker.";
+  image.classList.remove("profile-image");
+  image.src = "img/cookie-clicker.png";
+  headerModalText.innerHTML = `The inspiration for this game is cookie clicker. <a href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Click here to check it out.</a>`;
 }
 
 contactInfo.onclick = function() {
   headerModal.style.display = "block";
-  // image.src = this.src;
-  headerModalText.innerHTML = "You can contact me at 443-477-8160 or send me an email at ggybzz2297@gmail.com";
+  image.classList.add("profile-image");
+  image.src = "img/profile.jpg";
+  headerModalText.innerHTML = `You can contact me at 443-577-8160 or send me an email at <a title="My Email account" href="mailto:ggybzz2297@gmail.com">ggybzz2297@gmail.com.</a> Check out 
+  my accounts at <a title="My GitHub account" href="https://github.com/rheeze-dev" target="_blank">GitHub, </a><a title="My BitBucket account" 
+  href="https://bitbucket.org/rheeze-dev" target="_blank">BitBucket, </a><a title="My LinkedIn account" href="https://www.linkedin.com/in/rheeze-gyver-kalahi-a372aa185/" target="_blank">
+  and LinkedIn.</a>`;
 }
 
 userName.onclick = function() {
@@ -96,7 +105,7 @@ optionsButton.forEach((option) => {
       document.querySelector(".optionOne").style.background = "#f0f0f0";
       document.querySelector(".optionTen").style.background = "#f0f0f0";
       document.querySelector(".optionFifty").style.background = "#f0f0f0";
-      option.style.background = "#dbfff8";
+      option.style.background = "rgb(253, 205, 132)";
   });
 });
 
@@ -119,13 +128,13 @@ divAutoClickers.forEach((divAutoClicker) => {
 });
 
 buyButton.onclick = function() {
-  buyButton.style.background = "#dbfff8";
+  buyButton.style.background = "rgb(253, 205, 132)";
   sellButton.style.background = "#f0f0f0";
   isBuy = true;
 }
 
 sellButton.onclick = function() {
-  sellButton.style.background = "#dbfff8";
+  sellButton.style.background = "rgb(253, 205, 132)";
   buyButton.style.background= "#f0f0f0";
   isBuy = false;
 }
@@ -141,6 +150,7 @@ document.querySelector(".reset-button").onclick = function() {
   optionValue = 1;
   isBuy = true;
   removeAllImages();
+  // fetchFromAPI();
 }
 
 document.querySelector("#confirm-button").onclick = function() {
@@ -153,8 +163,10 @@ document.querySelector("#cancel-button").onclick = function() {
 }
 
 document.querySelector("#random-button").onclick = function() {
-  fetchFromAPI("random");
+  fetchFromAPI("randomUserName");
 }
+
+document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
 
 function insertImage(color){
   const divElement = document.querySelector(`#${color}`);
@@ -201,23 +213,15 @@ function removeAllImages(){
   redImageElement.replaceChildren();
 }
 
-function fetchFromAPI(param) {
-  let url = "https://randomuser.me/api/";
-    fetch(url)
-    .then(response => response.json())
-    .then(data => renderUserData(data, param))
-    .catch(error => alert(error));
-}
-
-function renderUserData(data, param) {
-  let user = data.results[0];
-  // console.log(user);
-  if(param == null) {
-    userName.innerHTML = user.login.username;
+async function fetchFromAPI(param) {
+  let response = await fetch("https://randomuser.me/api/");
+  let data = await response.json();
+  let username = data.results[0].login.username.substring(0, 15);
+  if(param === "randomUserName") {
+    inputUserName.value = username;
   }
-  else if(param === "random") {
-    inputUserName.value = user.login.username;
-  }
+  else
+    userName.innerHTML = username;
 }
 
 setInterval(function () {
@@ -244,19 +248,19 @@ setInterval(function () {
   }
 
   priceGreenClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.green) * optionValue}` 
-    : autoClickers.green === 0 ? "" : `x${optionValue} = ${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
+    : autoClickers.green === 0 ? "" : `${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
   greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"
-    : autoClickers.green === 0 ? "" : "-" + optionValue + " donuts per second";
+    : autoClickers.green === 0 ? "" : "-" + optionValue + " auto clickers if sold";
   totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green 
-  priceBlueClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.blue) * optionValue}`
-    : autoClickers.blue === 0 ? "" : `x${optionValue} = ${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue * .545) * optionValue)}`;
+  priceBlueClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.blue) * optionValue}`
+    : autoClickers.blue === 0 ? "" : `${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue * .545) * optionValue)}`;
   blueDonutPerSecond.innerHTML = isBuy ? "+" + 5 * optionValue + " donuts per second"
-    : autoClickers.blue === 0 ? "" : "-" + 5 * optionValue + " donuts per second";
+    : autoClickers.blue === 0 ? "" : "-" + 5 * optionValue + " auto clickers if sold";
   totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
   redDonutPerSecond.innerHTML = isBuy ? "+" + 10 * optionValue + " donuts per second"
-    : autoClickers.red === 0 ? "" : "-" + 10 * optionValue + " donuts per second";
-  priceRedClicker.innerHTML = isBuy ? `x${optionValue} = ${Math.round(autoClickerCost.red) * optionValue}`
-    : autoClickers.red === 0 ? "" : `x${optionValue} = ${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red * .545) * optionValue)}`;
+    : autoClickers.red === 0 ? "" : "-" + 10 * optionValue + " auto clickers if sold";
+  priceRedClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.red) * optionValue}`
+    : autoClickers.red === 0 ? "" : `${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red * .545) * optionValue)}`;
   totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
   let donutsPerSecond = autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
   totalDonutsPerSecond.innerHTML = donutsPerSecond <= 1 ? donutsPerSecond + " donut per second"

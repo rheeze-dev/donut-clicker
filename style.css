@@ -8,23 +8,28 @@
         "total-donuts green-area auto-clicker-green"
         "click-area blue-area auto-clicker-blue"
         "click-area red-area auto-clicker-red"
-        "click-area footer footer";
+        "footer footer footer";
     gap: .5rem;
+    text-align: center;
+    height: 96vh;
 }
 
 header {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: header;
+  text-align: left;
 }
 
 #greetings {
-  background: rgb(218, 218, 218);
-  /* background: rgb(255, 232, 183); */
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: greetings;
 }
 
 #shop {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: shop;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -33,8 +38,11 @@ header {
 }
 
 .shop-name {
-    grid-column: 1 / 2;
+    grid-column: 1 / -1;
     grid-row: 1;
+    text-align: center;
+    font-size: 2rem;
+    margin: 10px;
 }
 
 .reset-button {
@@ -43,70 +51,92 @@ header {
   background: #000;
   color: white;
   font-size: 2rem;
+  margin-right: 10px;
 }
 
 #buy-button {
-    grid-column: 1;
-    grid-row: 2;
-    background: #dbfff8;
+  grid-column: 1;
+  grid-row: 2;
+  background: rgb(253, 205, 132);
+  font-size: 2rem;
+  margin-left: 10px;
 }
 
 #sell-button {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 2rem;
 }
 
 .optionOne {
-    grid-column: 1;
-    grid-row: 3;
-    background: #dbfff8;
+  grid-column: 1;
+  grid-row: 3;
+  background: rgb(253, 205, 132);
+  font-size: 1.5rem;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .optionTen {
-    grid-column: 2;
-    grid-row: 3;
+  grid-column: 2;
+  grid-row: 3;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .optionFifty {
-    grid-column: 3;
-    grid-row: 3;
+  grid-column: 3;
+  grid-row: 3;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 #user-name {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: user-name;
 }
 
 #total-donuts {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: total-donuts;
 }
 
 #click-area {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: click-area;
+  cursor: pointer;
 }
 
 #green {
   /* background: rgb(218, 218, 218); */
   background: #e8f3db;
   grid-area: green-area;
+  text-align: left;
 }
 
 #auto-clicker-green {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: auto-clicker-green;
+  cursor: pointer;
 }
 
 #blue {
   /* background: rgb(218, 218, 218); */
   background: #cdeefd;
   grid-area: blue-area;
+  text-align: left;
 }
 
 #auto-clicker-blue {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: auto-clicker-blue;
+  cursor: pointer;
 }
 
 #red {
@@ -114,16 +144,21 @@ header {
   background: #ffeded;
   /* background: #ff7f7f; */
   grid-area: red-area;
+  text-align: left;
 }
 
 #auto-clicker-red {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: auto-clicker-red;
+  cursor: pointer;
 }
 
 footer {
-  background: rgb(218, 218, 218);
+  /* background: rgb(218, 218, 218); */
+  background: rgb(255, 232, 183);
   grid-area: footer;
+  text-align: center;
 }
 
 .modal {
@@ -144,8 +179,7 @@ footer {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    /* width: 50%; */
   }
   
   .close {
@@ -163,7 +197,7 @@ footer {
   }
 
   #img {
-    height: 320;
+    height: 320px;
     width: auto;
   }
 
@@ -189,20 +223,30 @@ footer {
   display: block;
   width: 100%;
   border: none;
-  background: rgba(0,0,0,0.4);
+  /* background: rgba(0,0,0,0.4); */
+  background: rgb(255, 232, 183);
   opacity: 0.5;
   padding: 14px 28px;
-  font-size: 4rem;
-  cursor: pointer;
+  font-size: 3rem;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 1px;
 }
 
-.modal-content {
-  /* background-color: #fefefe;
+.header-content {
+  background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888; */
+  border: 1px solid #888;
+  width: 40%;
+  text-align: center;
+}
+
+.user-name-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
   width: 20%;
   text-align: center;
 }
@@ -222,4 +266,73 @@ footer {
 
 #user-name h2 {
   margin: 0;
+}
+
+.total-donut-count {
+  font-size: 5rem;
+  margin: 20px;
+}
+
+.donut-texts {
+  font-size: 2rem;
+  margin: 5px;
+}
+
+.price-texts {
+  font-size: 3.5rem;
+  margin: 20px;
+}
+
+.auto-clickers {
+  font-size: 1.2rem;
+  margin: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#baking-company {
+  font-size: 1.5rem;
+  margin: 10px;
+  padding: 5px;
+}
+
+#donut-clicker {
+  font-size: 1.5rem;
+  margin: 10px 10px 10px 0;
+  padding: 5px;
+}
+
+#contact-info {
+  font-size: 1.5rem;
+  /* background: none;
+  border: none;
+  text-decoration: underline; */
+  margin: 10px;
+  padding: 5px;
+  float: right;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
+
+#donut-img:hover {
+  animation: shake .5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
