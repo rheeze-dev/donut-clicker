@@ -8,7 +8,7 @@
         "total-donuts green-area auto-clicker-green"
         "click-area blue-area auto-clicker-blue"
         "click-area red-area auto-clicker-red"
-        "click-area footer footer";
+        "footer footer footer";
     gap: .5rem;
     text-align: center;
     height: 96vh;
@@ -51,15 +51,15 @@ header {
   background: #000;
   color: white;
   font-size: 2rem;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #buy-button {
   grid-column: 1;
   grid-row: 2;
-  background: #dbfff8;
+  background: rgb(253, 205, 132);
   font-size: 2rem;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 #sell-button {
@@ -71,9 +71,9 @@ header {
 .optionOne {
   grid-column: 1;
   grid-row: 3;
-  background: #dbfff8;
+  background: rgb(253, 205, 132);
   font-size: 1.5rem;
-  margin-left: 5px;
+  margin-left: 10px;
   margin-bottom: 10px;
 }
 
@@ -88,7 +88,7 @@ header {
   grid-column: 3;
   grid-row: 3;
   font-size: 1.5rem;
-  margin-right: 5px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 
@@ -108,6 +108,7 @@ header {
   /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: click-area;
+  cursor: pointer;
 }
 
 #green {
@@ -121,6 +122,7 @@ header {
   /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-green;
+  cursor: pointer;
 }
 
 #blue {
@@ -134,6 +136,7 @@ header {
   /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-blue;
+  cursor: pointer;
 }
 
 #red {
@@ -148,6 +151,7 @@ header {
   /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-red;
+  cursor: pointer;
 }
 
 footer {
@@ -175,8 +179,7 @@ footer {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    /* width: 50%; */
   }
   
   .close {
@@ -224,7 +227,7 @@ footer {
   background: rgb(255, 232, 183);
   opacity: 0.5;
   padding: 14px 28px;
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
   color: rgb(0, 0, 0);
   border-radius: 1px;
@@ -235,7 +238,7 @@ footer {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%;
+  width: 40%;
   text-align: center;
 }
 
@@ -291,23 +294,45 @@ button {
 
 #baking-company {
   font-size: 1.5rem;
-  margin-bottom: 10px;
   margin: 10px;
   padding: 5px;
 }
 
 #donut-clicker {
   font-size: 1.5rem;
-  margin-bottom: 10px;
   margin: 10px 10px 10px 0;
   padding: 5px;
 }
 
 #contact-info {
-  font-size: 2rem;
-  background: none;
+  font-size: 1.5rem;
+  /* background: none;
   border: none;
-  text-decoration: underline;
+  text-decoration: underline; */
   margin: 10px;
+  padding: 5px;
   float: right;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
+
+#donut-img:hover {
+  animation: shake .5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
