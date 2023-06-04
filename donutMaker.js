@@ -1,7 +1,7 @@
 const headerModal = document.querySelector("#header-modal");
 const userNameModal = document.querySelector("#user-name-modal");
 const bakingCompany = document.querySelector("#baking-company");
-const donutClicker = document.querySelector("#donut-clicker");
+const cookieClicker = document.querySelector("#cookie-clicker");
 const contactInfo = document.querySelector("#contact-info");
 const image = document.querySelector("#img");
 let headerModalText = document.querySelector(".header-modal-text");
@@ -54,7 +54,7 @@ bakingCompany.onclick = function() {
   the world to enjoy. It's always "Time to make the Donuts" and Fred is too busy to give guidance on how to implement the requirements.`;
 }
 
-donutClicker.onclick = function() {
+cookieClicker.onclick = function() {
   headerModal.style.display = "block";
   image.classList.remove("profile-image");
   image.src = "img/cookie-clicker.png";
@@ -94,7 +94,6 @@ window.onclick = function(event) {
 
 clickArea.onclick = function() {
   donutCount++;
-  // donutImage.style.transform = "scale(0.9)";
   totalDonuts.innerText = donutCount;
 }
 
@@ -168,7 +167,7 @@ document.querySelector("#random-button").onclick = function() {
 
 document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
 
-function insertImage(color){
+function insertImage(color) {
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
   img.setAttribute("data", optionValue);
@@ -242,7 +241,7 @@ setInterval(async () => {
   document.querySelector("#random-jokes-area").innerHTML = data[0].joke;
 }, 300000);
 
-setInterval(function () {
+setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
 }, 1000);
 
@@ -264,7 +263,6 @@ setInterval(() => {
     if(document.querySelector("#red").querySelector(`[data="${optionValue}"]`) == null ) autoClickerRedDiv.classList.add("disabled");
     else autoClickerRedDiv.classList.remove("disabled");
   }
-
   priceGreenClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.green) * optionValue}` 
     : autoClickers.green === 0 ? "" : `${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
   greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"
