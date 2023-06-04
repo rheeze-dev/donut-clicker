@@ -1,7 +1,7 @@
 const headerModal = document.querySelector("#header-modal");
 const userNameModal = document.querySelector("#user-name-modal");
 const bakingCompany = document.querySelector("#baking-company");
-const donutClicker = document.querySelector("#donut-clicker");
+const cookieClicker = document.querySelector("#cookie-clicker");
 const contactInfo = document.querySelector("#contact-info");
 const image = document.querySelector("#img");
 let headerModalText = document.querySelector(".header-modal-text");
@@ -43,7 +43,7 @@ let autoClickerCost = {
 let optionValue = 1;
 let isBuy = true;
 
-fetchFromAPI();
+fetchUserNameFromAPI();
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -54,7 +54,7 @@ bakingCompany.onclick = function() {
   the world to enjoy. It's always "Time to make the Donuts" and Fred is too busy to give guidance on how to implement the requirements.`;
 }
 
-donutClicker.onclick = function() {
+cookieClicker.onclick = function() {
   headerModal.style.display = "block";
   image.classList.remove("profile-image");
   image.src = "img/cookie-clicker.png";
@@ -94,7 +94,6 @@ window.onclick = function(event) {
 
 clickArea.onclick = function() {
   donutCount++;
-  // donutImage.style.transform = "scale(0.9)";
   totalDonuts.innerText = donutCount;
 }
 
@@ -150,7 +149,7 @@ document.querySelector(".reset-button").onclick = function() {
   optionValue = 1;
   isBuy = true;
   removeAllImages();
-  // fetchFromAPI();
+  // fetchUserNameFromAPI();
 }
 
 document.querySelector("#confirm-button").onclick = function() {
@@ -163,12 +162,12 @@ document.querySelector("#cancel-button").onclick = function() {
 }
 
 document.querySelector("#random-button").onclick = function() {
-  fetchFromAPI("randomUserName");
+  fetchUserNameFromAPI("randomUserName");
 }
 
 document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
 
-function insertImage(color){
+function insertImage(color) {
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
   img.setAttribute("data", optionValue);
@@ -213,7 +212,7 @@ function removeAllImages(){
   redImageElement.replaceChildren();
 }
 
-async function fetchFromAPI(param) {
+async function fetchUserNameFromAPI(param) {
   let response = await fetch("https://randomuser.me/api/");
   let data = await response.json();
   let username = data.results[0].login.username.substring(0, 15);
@@ -224,11 +223,29 @@ async function fetchFromAPI(param) {
     userName.innerHTML = username;
 }
 
-setInterval(function () {
+setInterval(async () => {
+  const limit = 1;
+	const response = await fetch(
+		"https://api.api-ninjas.com/v1/dadjokes?limit=" + limit,
+		{
+			method: "GET",
+			headers: {
+				"X-Api-Key": "54/p8rt+p9QhgeN9G/Z5Sg==wrJ1tX7OT2EAdJcR",
+        "Content-type": "application/json; charset=UTF-8"
+			}
+		});
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+	const data = await response.json();
+  document.querySelector("#random-jokes-area").innerHTML = data[0].joke;
+}, 300000);
+
+setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
 }, 1000);
 
-setInterval(function () {
+setInterval(() => {
   totalDonuts.innerHTML = donutCount;
   if(isBuy) {
     if(donutCount < (autoClickerCost.green * optionValue)) autoClickerGreenDiv.classList.add("disabled");
@@ -246,7 +263,6 @@ setInterval(function () {
     if(document.querySelector("#red").querySelector(`[data="${optionValue}"]`) == null ) autoClickerRedDiv.classList.add("disabled");
     else autoClickerRedDiv.classList.remove("disabled");
   }
-
   priceGreenClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.green) * optionValue}` 
     : autoClickers.green === 0 ? "" : `${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
   greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"

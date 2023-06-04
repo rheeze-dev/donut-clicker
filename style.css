@@ -1,34 +1,35 @@
 .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: .2fr .4fr 1fr 1fr 1fr;
-    grid-template-areas: 
-        "header header shop"
-        "user-name greetings shop"
-        "total-donuts green-area auto-clicker-green"
-        "click-area blue-area auto-clicker-blue"
-        "click-area red-area auto-clicker-red"
-        "footer footer footer";
-    gap: .5rem;
-    text-align: center;
-    height: 96vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: .2fr .4fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "header header shop"
+    "user-name jokes shop"
+    "total-donuts green-area auto-clicker-green"
+    "click-area blue-area auto-clicker-blue"
+    "click-area red-area auto-clicker-red"
+    "footer footer footer";
+  gap: .5rem;
+  text-align: center;
+  height: 96vh;
 }
 
 header {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: header;
   text-align: left;
 }
 
-#greetings {
-  /* background: rgb(218, 218, 218); */
+#jokes {
   background: rgb(255, 232, 183);
-  grid-area: greetings;
+  grid-area: jokes;
+}
+
+#random-jokes-area {
+  font-size: 1.3rem;
 }
 
 #shop {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: shop;
   display: grid;
@@ -38,11 +39,11 @@ header {
 }
 
 .shop-name {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    text-align: center;
-    font-size: 2rem;
-    margin: 10px;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px;
 }
 
 .reset-button {
@@ -93,144 +94,135 @@ header {
 }
 
 #user-name {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: user-name;
 }
 
 #total-donuts {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: total-donuts;
 }
 
 #click-area {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: click-area;
   cursor: pointer;
 }
 
 #green {
-  /* background: rgb(218, 218, 218); */
   background: #e8f3db;
   grid-area: green-area;
   text-align: left;
 }
 
 #auto-clicker-green {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-green;
   cursor: pointer;
 }
 
 #blue {
-  /* background: rgb(218, 218, 218); */
   background: #cdeefd;
   grid-area: blue-area;
   text-align: left;
 }
 
 #auto-clicker-blue {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-blue;
   cursor: pointer;
 }
 
 #red {
-  /* background: rgb(218, 218, 218); */
   background: #ffeded;
-  /* background: #ff7f7f; */
   grid-area: red-area;
   text-align: left;
 }
 
 #auto-clicker-red {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: auto-clicker-red;
   cursor: pointer;
 }
 
 footer {
-  /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
   grid-area: footer;
   text-align: center;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-  }
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
   
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    /* width: 50%; */
-  }
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+}
   
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-  #img {
-    height: 320px;
-    width: auto;
-  }
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  button:active {
-    transform: scale(0.9);
-  }
+#img {
+  height: 320px;
+  width: auto;
+}
 
-  button {
-    border-radius: 12px;
-  }
+button:active {
+  transform: scale(0.9);
+}
 
-  #donut-img {
-    height: 100%;
-    width: 100%;
-  }
+button {
+  border-radius: 12px;
+}
 
-  .disabled {
-    pointer-events: none;
-    opacity: 0.4;
+#donut-img {
+  height: 100%;
+  width: 100%;
+  transform: scale(0.9);
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 #btn-user-name {
   display: block;
   width: 100%;
   border: none;
-  /* background: rgba(0,0,0,0.4); */
   background: rgb(255, 232, 183);
-  opacity: 0.5;
+  opacity: 0.6;
+  transition: 0.3s;
   padding: 14px 28px;
   font-size: 3rem;
   text-align: center;
   color: rgb(0, 0, 0);
   border-radius: 1px;
+}
+
+#btn-user-name:hover {
+  opacity: 1
 }
 
 .header-content {
@@ -298,7 +290,7 @@ button {
   padding: 5px;
 }
 
-#donut-clicker {
+#cookie-clicker {
   font-size: 1.5rem;
   margin: 10px 10px 10px 0;
   padding: 5px;
@@ -306,9 +298,6 @@ button {
 
 #contact-info {
   font-size: 1.5rem;
-  /* background: none;
-  border: none;
-  text-decoration: underline; */
   margin: 10px;
   padding: 5px;
   float: right;
@@ -336,3 +325,4 @@ button {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
