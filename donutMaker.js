@@ -29,7 +29,7 @@ const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
 const inputUserName = document.querySelector("#input-user-name");
 
-let donutCount = 9000;
+let donutCount = 0;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -239,7 +239,7 @@ setInterval(async () => {
 	}
 	const data = await response.json();
   document.querySelector("#random-jokes-area").innerHTML = data[0].joke;
-}, 300000);
+}, 15000);
 
 setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
