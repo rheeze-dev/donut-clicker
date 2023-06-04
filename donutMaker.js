@@ -28,8 +28,11 @@ const totalDonutsPerSecond = document.querySelector(".total-donuts-per-second");
 const buyButton = document.querySelector("#buy-button");
 const sellButton = document.querySelector("#sell-button");
 const inputUserName = document.querySelector("#input-user-name");
+const optionOne = document.querySelector(".optionOne");
+const optionTen = document.querySelector(".optionTen");
+const optionFifty = document.querySelector(".optionFifty");
 
-let donutCount = 9000;
+let donutCount = 0;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -101,9 +104,9 @@ optionsButton.forEach((option) => {
   option.addEventListener("click", function() {
     const attr = option.getAttribute("data-attr");
     optionValue = attr;
-      document.querySelector(".optionOne").style.background = "#f0f0f0";
-      document.querySelector(".optionTen").style.background = "#f0f0f0";
-      document.querySelector(".optionFifty").style.background = "#f0f0f0";
+      optionOne.style.background = "#f0f0f0";
+      optionTen.style.background = "#f0f0f0";
+      optionFifty.style.background = "#f0f0f0";
       option.style.background = "rgb(253, 205, 132)";
   });
 });
@@ -150,6 +153,11 @@ document.querySelector(".reset-button").onclick = function() {
   isBuy = true;
   removeAllImages();
   // fetchUserNameFromAPI();
+  optionOne.style.background = "rgb(253, 205, 132)";
+  optionTen.style.background = "#f0f0f0";
+  optionFifty.style.background = "#f0f0f0";
+  buyButton.style.background = "rgb(253, 205, 132)";
+  sellButton.style.background = "#f0f0f0";
 }
 
 document.querySelector("#confirm-button").onclick = function() {
@@ -204,12 +212,9 @@ function removeImage(color){
 }
 
 function removeAllImages(){
-  const greenImageElement = document.querySelector("#green");
-  greenImageElement.replaceChildren();
-  const blueImageElement = document.querySelector("#blue");
-  blueImageElement.replaceChildren();
-  const redImageElement = document.querySelector("#red");
-  redImageElement.replaceChildren();
+  document.querySelector("#green").replaceChildren();
+  document.querySelector("#blue").replaceChildren();
+  document.querySelector("#red").replaceChildren();
 }
 
 async function fetchUserNameFromAPI(param) {
@@ -238,15 +243,19 @@ setInterval(async () => {
 		throw new Error(`HTTP error! status: ${response.status}`);
 	}
 	const data = await response.json();
+  document.querySelector("#random-jokes-area").classList.add("animate")
   document.querySelector("#random-jokes-area").innerHTML = data[0].joke;
-}, 300000);
+  setTimeout(() => {
+    document.querySelector("#random-jokes-area").classList.remove("animate")
+  },5000);
+}, 15000);
 
 setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
 }, 1000);
 
 setInterval(() => {
-  totalDonuts.innerHTML = donutCount;
+  totalDonuts.innerHTML = donutCount.toLocaleString();
   if(isBuy) {
     if(donutCount < (autoClickerCost.green * optionValue)) autoClickerGreenDiv.classList.add("disabled");
     else autoClickerGreenDiv.classList.remove("disabled");
@@ -263,22 +272,22 @@ setInterval(() => {
     if(document.querySelector("#red").querySelector(`[data="${optionValue}"]`) == null ) autoClickerRedDiv.classList.add("disabled");
     else autoClickerRedDiv.classList.remove("disabled");
   }
-  priceGreenClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.green) * optionValue}` 
-    : autoClickers.green === 0 ? "" : `${(Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)}`;
+  priceGreenClicker.innerHTML = isBuy ? (Math.round(autoClickerCost.green) * optionValue).toLocaleString() 
+    : autoClickers.green === 0 ? "" : ((Math.round(autoClickerCost.green) * optionValue) - (Math.round(autoClickerCost.green * .545) * optionValue)).toLocaleString();
   greenDonutPerSecond.innerHTML = isBuy ? "+" + optionValue + " donuts per second"
     : autoClickers.green === 0 ? "" : "-" + optionValue + " auto clickers if sold";
   totalGreenClicker.innerHTML = "Total auto clickers: " + autoClickers.green 
-  priceBlueClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.blue) * optionValue}`
-    : autoClickers.blue === 0 ? "" : `${(Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue * .545) * optionValue)}`;
+  priceBlueClicker.innerHTML = isBuy ? (Math.round(autoClickerCost.blue) * optionValue).toLocaleString()
+    : autoClickers.blue === 0 ? "" : ((Math.round(autoClickerCost.blue) * optionValue) - (Math.round(autoClickerCost.blue * .545) * optionValue)).toLocaleString();
   blueDonutPerSecond.innerHTML = isBuy ? "+" + 5 * optionValue + " donuts per second"
     : autoClickers.blue === 0 ? "" : "-" + 5 * optionValue + " auto clickers if sold";
   totalBlueClicker.innerHTML = "Total auto clickers: " + autoClickers.blue;
   redDonutPerSecond.innerHTML = isBuy ? "+" + 10 * optionValue + " donuts per second"
     : autoClickers.red === 0 ? "" : "-" + 10 * optionValue + " auto clickers if sold";
-  priceRedClicker.innerHTML = isBuy ? `${Math.round(autoClickerCost.red) * optionValue}`
-    : autoClickers.red === 0 ? "" : `${(Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red * .545) * optionValue)}`;
+  priceRedClicker.innerHTML = isBuy ? (Math.round(autoClickerCost.red) * optionValue).toLocaleString()
+    : autoClickers.red === 0 ? "" : ((Math.round(autoClickerCost.red) * optionValue) - (Math.round(autoClickerCost.red * .545) * optionValue)).toLocaleString();
   totalRedClicker.innerHTML = "Total auto clickers: " + autoClickers.red;
   let donutsPerSecond = autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
   totalDonutsPerSecond.innerHTML = donutsPerSecond <= 1 ? donutsPerSecond + " donut per second"
-    : donutsPerSecond + " donuts per second";
+    : donutsPerSecond.toLocaleString() + " donuts per second";
 }, 100);
