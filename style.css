@@ -4,7 +4,7 @@
     grid-template-rows: .2fr .4fr 1fr 1fr 1fr;
     grid-template-areas: 
         "header header shop"
-        "user-name greetings shop"
+        "user-name jokes shop"
         "total-donuts green-area auto-clicker-green"
         "click-area blue-area auto-clicker-blue"
         "click-area red-area auto-clicker-red"
@@ -21,10 +21,14 @@ header {
   text-align: left;
 }
 
-#greetings {
+#jokes {
   /* background: rgb(218, 218, 218); */
   background: rgb(255, 232, 183);
-  grid-area: greetings;
+  grid-area: jokes;
+}
+
+#random-jokes-area {
+  font-size: 1.3rem;
 }
 
 #shop {
@@ -225,13 +229,17 @@ footer {
   border: none;
   /* background: rgba(0,0,0,0.4); */
   background: rgb(255, 232, 183);
-  opacity: 0.5;
+  /* background-color: #f4511e; */
+  opacity: 0.6;
+  transition: 0.3s;
   padding: 14px 28px;
   font-size: 3rem;
   text-align: center;
   color: rgb(0, 0, 0);
   border-radius: 1px;
 }
+
+#btn-user-name:hover {opacity: 1}
 
 .header-content {
   background-color: #fefefe;

@@ -43,7 +43,7 @@ let autoClickerCost = {
 let optionValue = 1;
 let isBuy = true;
 
-fetchFromAPI();
+fetchUserNameFromAPI();
 
 bakingCompany.onclick = function() {
   headerModal.style.display = "block";
@@ -150,7 +150,7 @@ document.querySelector(".reset-button").onclick = function() {
   optionValue = 1;
   isBuy = true;
   removeAllImages();
-  // fetchFromAPI();
+  // fetchUserNameFromAPI();
 }
 
 document.querySelector("#confirm-button").onclick = function() {
@@ -163,7 +163,7 @@ document.querySelector("#cancel-button").onclick = function() {
 }
 
 document.querySelector("#random-button").onclick = function() {
-  fetchFromAPI("randomUserName");
+  fetchUserNameFromAPI("randomUserName");
 }
 
 document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
@@ -213,7 +213,7 @@ function removeAllImages(){
   redImageElement.replaceChildren();
 }
 
-async function fetchFromAPI(param) {
+async function fetchUserNameFromAPI(param) {
   let response = await fetch("https://randomuser.me/api/");
   let data = await response.json();
   let username = data.results[0].login.username.substring(0, 15);
@@ -224,11 +224,29 @@ async function fetchFromAPI(param) {
     userName.innerHTML = username;
 }
 
+setInterval(async () => {
+  const limit = 1;
+	const response = await fetch(
+		"https://api.api-ninjas.com/v1/dadjokes?limit=" + limit,
+		{
+			method: "GET",
+			headers: {
+				"X-Api-Key": "54/p8rt+p9QhgeN9G/Z5Sg==wrJ1tX7OT2EAdJcR",
+        "Content-type": "application/json; charset=UTF-8"
+			}
+		});
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+	const data = await response.json();
+  document.querySelector("#random-jokes-area").innerHTML = data[0].joke;
+}, 300000);
+
 setInterval(function () {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
 }, 1000);
 
-setInterval(function () {
+setInterval(() => {
   totalDonuts.innerHTML = donutCount;
   if(isBuy) {
     if(donutCount < (autoClickerCost.green * optionValue)) autoClickerGreenDiv.classList.add("disabled");
