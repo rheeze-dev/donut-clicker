@@ -313,6 +313,22 @@ button {
   animation-iteration-count: infinite;
 }
 
+.animate {
+  position:relative;
+  animation:animatetop 3s;
+}
+
+@keyframes animatetop {
+  from {
+    top:-5x;
+    opacity:0;
+  } 
+  to {
+    top:0;
+    opacity:1;
+  }
+}
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -632,19 +648,26 @@ button {
   p {
     font-size: .8rem;
   }
+
+  footer {
+    font-size: .8rem;
+  }
 }
 
 @media only screen and (max-width:605px) {
   #baking-company {
     font-size: .2rem;
+    margin: 0;
   }
 
   #cookie-clicker {
-    font-size: .2rem;
+    font-size: .3rem;
   }
 
   #contact-info {
-    font-size: .1rem;
+    font-size: .3rem;
+    margin: 0;
+    margin-top: 10px;
   }
 
   #buy-button {
@@ -688,7 +711,7 @@ button {
   }
 
   #img {
-    height: 80px;
+    height: 50px;
   }
 
   #random-jokes-area {
@@ -731,6 +754,10 @@ button {
   }
 
   p {
+    font-size: .6rem;
+  }
+
+  footer {
     font-size: .6rem;
   }
 }
