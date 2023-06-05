@@ -32,7 +32,7 @@ const optionOne = document.querySelector(".optionOne");
 const optionTen = document.querySelector(".optionTen");
 const optionFifty = document.querySelector(".optionFifty");
 
-let donutCount = 0;
+let donutCount = 90;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -68,10 +68,12 @@ contactInfo.onclick = function() {
   headerModal.style.display = "block";
   image.classList.add("profile-image");
   image.src = "img/profile.jpg";
-  headerModalText.innerHTML = `You can contact me at 443-577-8160 or send me an email at <a title="My Email account" href="mailto:ggybzz2297@gmail.com">ggybzz2297@gmail.com.</a> Check out 
+  headerModalText.innerHTML = `You can contact me at 443-577-8160 or send me an email at <a title="My Email account" href="mailto:ggybzz2297@gmail.com">ggybzz2297@gmail.com.</a> 
+  Want to play more games? Here are other games that I made: <a href="https://rheeze-racinggame.netlify.app/" target="_blank">Racing game</a> and 
+  <a href="https://rheeze-guessinggame.netlify.app/" target="_blank">Guessing game</a>. Visit my portfolio at <a href="https://rheeze-dev.github.io/" target="_blank">https://rheeze-dev.github.io</a>.
+  </a> Check out 
   my accounts at <a title="My GitHub account" href="https://github.com/rheeze-dev" target="_blank">GitHub, </a><a title="My BitBucket account" 
-  href="https://bitbucket.org/rheeze-dev" target="_blank">BitBucket, </a><a title="My LinkedIn account" href="https://www.linkedin.com/in/rheeze-gyver-kalahi-a372aa185/" target="_blank">
-  and LinkedIn.</a>`;
+  href="https://bitbucket.org/rheeze-dev" target="_blank">BitBucket</a> and <a title="My LinkedIn account" href="https://www.linkedin.com/in/rheeze-gyver-kalahi-a372aa185/" target="_blank">LinkedIn.</a>`;
 }
 
 userName.onclick = function() {
@@ -228,6 +230,15 @@ async function fetchUserNameFromAPI(param) {
     userName.innerHTML = username;
 }
 
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 setInterval(async () => {
   const limit = 1;
 	const response = await fetch(
@@ -248,7 +259,7 @@ setInterval(async () => {
   setTimeout(() => {
     document.querySelector("#random-jokes-area").classList.remove("animate")
   },5000);
-}, 15000);
+}, 1500000);
 
 setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);

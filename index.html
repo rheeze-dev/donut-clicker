@@ -5,14 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Rheeze Donut Clicker</title>
   </head>
   <body>
     <div class="container">
         <header>
-          <button id="baking-company">Fred the Baker Baking Company</button>
-          <button id="cookie-clicker">Cookie Clicker</button>
-          <button id="contact-info">My contact information</button>
+          <div class="topnav" id="myTopnav">
+            <a href="#" id="baking-company">Baking company</a>
+            <a href="#" id="cookie-clicker">Cookie Clicker</a>
+            <a href="#" id="contact-info">My contact info</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
           <div id="header-modal" class="modal">
             <div class="modal-content header-content">
               <span class="close close-header-modal">&times;</span>
@@ -47,9 +53,8 @@
         <button class="options optionFifty" data-attr="50">50</button>
       </div>
       <div id="total-donuts">
-        <p class="donut-texts"></p>
         <p class="total-donut-count"></p>
-        <p class="donut-texts total-donuts-per-second"></p>
+        <p class="total-donuts-per-second"></p>
       </div>
       <div id="click-area">
         <img src="/img/donut.png" id="donut-img" alt="">
