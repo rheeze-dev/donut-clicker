@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: .2fr .4fr 1fr 1fr 1fr;
+  grid-template-rows: .2fr .4fr 1fr 1fr 1fr auto;
   grid-template-areas: 
     "header header shop"
     "user-name jokes shop"
@@ -221,7 +221,8 @@ button {
 }
 
 #btn-user-name:hover {
-  opacity: 1
+  opacity: 1;
+  background: rgb(253, 205, 132);
 }
 
 .header-content {
@@ -276,7 +277,6 @@ button {
 
 .auto-clickers {
   font-size: 1.2rem;
-  margin: 5px;
 }
 
 button {
@@ -488,7 +488,7 @@ button {
       "click-area auto-clicker-blue"
       "click-area auto-clicker-red"
       "jokes green-area"
-      "red-area blue-area"
+      "blue-area red-area"
       "footer footer";
   }
   

@@ -32,7 +32,7 @@ const optionOne = document.querySelector(".optionOne");
 const optionTen = document.querySelector(".optionTen");
 const optionFifty = document.querySelector(".optionFifty");
 
-let donutCount = 90;
+let donutCount = 0;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -45,6 +45,8 @@ let autoClickerCost = {
 };
 let optionValue = 1;
 let isBuy = true;
+
+document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
 
 fetchUserNameFromAPI();
 
@@ -175,8 +177,6 @@ document.querySelector("#random-button").onclick = function() {
   fetchUserNameFromAPI("randomUserName");
 }
 
-document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
-
 function insertImage(color) {
   const divElement = document.querySelector(`#${color}`);
   const img = document.createElement("img");
@@ -259,7 +259,7 @@ setInterval(async () => {
   setTimeout(() => {
     document.querySelector("#random-jokes-area").classList.remove("animate")
   },5000);
-}, 1500000);
+}, 20000);
 
 setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);
