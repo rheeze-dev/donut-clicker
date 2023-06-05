@@ -32,7 +32,7 @@ const optionOne = document.querySelector(".optionOne");
 const optionTen = document.querySelector(".optionTen");
 const optionFifty = document.querySelector(".optionFifty");
 
-let donutCount = 90;
+let donutCount = 0;
 let autoClickers = {
   green: 0,
   blue: 0,
@@ -259,7 +259,7 @@ setInterval(async () => {
   setTimeout(() => {
     document.querySelector("#random-jokes-area").classList.remove("animate")
   },5000);
-}, 1500000);
+}, 20000);
 
 setInterval(() => {
   donutCount += autoClickers.green + (autoClickers.blue * 5) + (autoClickers.red * 10);

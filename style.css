@@ -221,7 +221,8 @@ button {
 }
 
 #btn-user-name:hover {
-  opacity: 1
+  opacity: 1;
+  background: rgb(253, 205, 132);
 }
 
 .header-content {
