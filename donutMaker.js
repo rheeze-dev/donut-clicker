@@ -46,6 +46,8 @@ let autoClickerCost = {
 let optionValue = 1;
 let isBuy = true;
 
+document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
+
 fetchUserNameFromAPI();
 
 bakingCompany.onclick = function() {
@@ -174,8 +176,6 @@ document.querySelector("#cancel-button").onclick = function() {
 document.querySelector("#random-button").onclick = function() {
   fetchUserNameFromAPI("randomUserName");
 }
-
-document.querySelector("footer").innerHTML = "Copyright &copy; " + new Date().getFullYear();
 
 function insertImage(color) {
   const divElement = document.querySelector(`#${color}`);
