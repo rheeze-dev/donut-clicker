@@ -133,6 +133,15 @@ divAutoClickers.forEach((divAutoClicker) => {
   });
 });
 
+document.querySelector(".icon").onclick = () => {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 buyButton.onclick = function() {
   buyButton.style.background = "rgb(253, 205, 132)";
   sellButton.style.background = "#f0f0f0";
@@ -228,15 +237,6 @@ async function fetchUserNameFromAPI(param) {
   }
   else
     userName.innerHTML = username;
-}
-
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
 }
 
 setInterval(async () => {
